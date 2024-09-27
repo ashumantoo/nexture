@@ -1,0 +1,51 @@
+// COLOR VARIABLES
+$color-primary: #c69963;
+$color-primary-dark: #B28451;
+
+$color-secondary: #101d2c;
+
+$color-grey-light-1: #f9f7f6;
+$color-grey-light-2: #aaa;
+
+$color-grey-dark-1: #54483A;
+$color-grey-dark-2: #6D5D4B;
+
+// FONT VARIABLES
+$font-primary: 'Nunito', sans-serif;
+$font-display: 'Josefin Sans', sans-serif;
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.50%; // 1rem = 10px = 10px/16px = 62.50
+}
+
+body {
+  font-family: $font-primary;
+  color: $color-grey-dark-2;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  //NOTE:logic behind grid-template-coluns vlaue, we wanted to have 8 columns and we want a width of each of this column to be between their minimum content and 1400px;
+  //8rem for sidebar
+  //given each grid column a name [sidebar-start] [sidebar-end] etc
+  //--------------------------------------------------------------------------------------------------------------
+  // grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] 1fr [center-start] repeat(8,
+  //     [col-start] minmax(min-content, 14rem) [col-end]) [center-end] 1fr [full-end];
+
+  //by changing 1fr -> minmax(6rem,1fr) , we are making sure that when we change the screen size, the column will never gets smaller than 6rem
+  //60px space always will be avialble of both side of feature section
+  grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8,
+      [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+}
